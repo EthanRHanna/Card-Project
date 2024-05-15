@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5450575545644041708}
   - component: {fileID: 3475047918503443505}
+  - component: {fileID: -8796558421425616340}
   m_Layer: 0
   m_Name: Fireball Card
   m_TagString: Untagged
@@ -84,3 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8796558421425616340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083455678301937171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5faef20d01234a41af553be3ef22a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardName: FireBall
+  CardDamage: 2D6
+  CardElement: Fire
+  isSpell: 1
+  SpellTier: 3

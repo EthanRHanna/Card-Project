@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    public string CardName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    public string CardDamage;
+
+    [SerializeField]
+    public string CardElement;
+
+    [SerializeField]
+    public bool isSpell;
+
+    [SerializeField]
+    public int SpellTier;
 }

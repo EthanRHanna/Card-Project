@@ -318,6 +318,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 669877479}
     m_Modifications:
+    - target: {fileID: -8796558421425616340, guid: 2099eda954e13ec4183253accde53b8a, type: 3}
+      propertyPath: SpellTier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4083455678301937171, guid: 2099eda954e13ec4183253accde53b8a, type: 3}
       propertyPath: m_Name
       value: Fireball Card
