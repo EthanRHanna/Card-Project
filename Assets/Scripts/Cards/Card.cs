@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Card : MonoBehaviour{
 
@@ -27,6 +24,7 @@ public class Card : MonoBehaviour{
             CM.AvailableCardSlots[HandIndex] = Played;
             CM.CardSlots[HandIndex].gameObject.SetActive(Played);
 
+            Debug.Log(DamageRoll(gameObject.GetComponent<CardInfo>().CardDamage));
             Invoke("DiscardCard", 2f);
         }
     }
@@ -37,5 +35,30 @@ public class Card : MonoBehaviour{
 
         CM.DiscardPile.Add(this);
         gameObject.SetActive(!Played);
+    }
+
+    //"Rolls" the damage for the card that is played
+    private int DamageRoll(String UnrolledDamage){
+        int Damage  = 0;
+        var DamageTuple = ParseDamge(UnrolledDamage);
+        int AmountofDice = DamageTuple.Item1;
+        int TypeofDice = DamageTuple.Item2;
+
+        for(int i = 0; i < AmountofDice; i++){
+            Damage += UnityEngine.Random.Range(1, TypeofDice+1);
+        }
+
+        return Damage;
+    }
+
+    //Uses Tuple to get mutiple returns from the function
+    //Get the Amount of Dice and the Type of dice from CardDamage in CardInfo
+    private Tuple<int, int> ParseDamge(String UnrolledDamage){
+        String Amount = UnrolledDamage.Substring(0, UnrolledDamage.IndexOf("D"));
+        //Debug.Log(Amount);
+        String Type = UnrolledDamage.Substring(UnrolledDamage.IndexOf("D") + 1);
+        //Debug.Log(Type);
+
+        return Tuple.Create(Convert.ToInt32(Amount), Convert.ToInt32(Type));
     }
 }
