@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -8,18 +9,33 @@ public class CardManager : MonoBehaviour
     [SerializeField]
     public Transform[] CardSlots;
 
-
     public bool[] AvailableCardSlots;
+    public List<Card> DiscardPile = new List<Card>();
 
-    void Start(){
-        foreach(Transform Slot in CardSlots){
-            DrawCard();
+    private int TotalDeckAmount;
+
+    //Sets total deck size, and draws cards if there are slots open
+    private void Start(){
+        TotalDeckAmount = Deck.Count;
+
+        foreach(bool Slot in AvailableCardSlots){
+            if(Slot)
+                DrawCard();
         }
     }
 
+    //Automaic shuffle to readd cards from the Discard pile when there is more than half of the starting deck inside of the discard pile
+    private void Update(){
+        if(DiscardPile.Count > TotalDeckAmount / 2){
+            Shuffle();
+        }
+    }
+
+    //Draws a card form the deck and moves it on to the hand postions
     public void DrawCard(){
         if(Deck.Count >= 1){
             Card RandomCard = Deck[Random.Range(0, Deck.Count)];
+            //Debug.Log(RandomCard + " has been Drawn!");
 
             for (int i = 0; i < AvailableCardSlots.Length; i++){
                 if(AvailableCardSlots[i]){
@@ -37,4 +53,17 @@ public class CardManager : MonoBehaviour
             }
         }
     }
+
+
+    //Moves cards from the Discard Pile into the Deck to be played again
+    private void Shuffle(){
+        Debug.Log("Suffle!");
+        foreach(Card card in DiscardPile){
+            card.Played = false;
+            Deck.Add(card);
+        }
+
+        DiscardPile.Clear();
+    }
+
 }
