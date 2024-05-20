@@ -40,7 +40,7 @@ public class Card : MonoBehaviour{
     //"Rolls" the damage for the card that is played
     private int DamageRoll(String UnrolledDamage){
         int Damage  = 0;
-        var DamageTuple = ParseDamge(UnrolledDamage);
+        var DamageTuple = ParseDamge(UnrolledDamage.ToUpper());
         int AmountofDice = DamageTuple.Item1;
         int TypeofDice = DamageTuple.Item2;
 
