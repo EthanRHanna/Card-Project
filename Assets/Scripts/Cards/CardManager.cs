@@ -12,7 +12,9 @@ public class CardManager : MonoBehaviour
     public bool[] AvailableCardSlots;
 
     void Start(){
-        DrawCard();
+        foreach(Transform Slot in CardSlots){
+            DrawCard();
+        }
     }
 
     public void DrawCard(){
@@ -29,7 +31,7 @@ public class CardManager : MonoBehaviour
                     
 
                     AvailableCardSlots[i] = false;
-                    //Deck.Remove(RandomCard);
+                    Deck.Remove(RandomCard);
                     return;
                 }
             }
