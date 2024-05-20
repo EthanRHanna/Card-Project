@@ -1,22 +1,30 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Card : MonoBehaviour
-{
-    [SerializeField]
-    public string CardName;
+public class Card : MonoBehaviour{
 
-    [SerializeField]
-    public string CardDamage;
+    public bool Played = false;
+    public int HandIndex;
 
-    [SerializeField]
-    public string CardElement;
+    private CardManager CM;
+    
 
-    [SerializeField]
-    public bool isSpell;
+    void Start(){
+        CM = FindObjectOfType<CardManager>();
+    }
 
-    [SerializeField]
-    public int SpellTier;
+    void OnMouseDown(){
+        Debug.Log("Been Clicked");
+        if(!Played){
+            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 3.3f), 1);
+
+            Played = !Played;
+            CM.AvailableCardSlots[HandIndex] = Played;
+            CM.CardSlots[HandIndex].gameObject.SetActive(Played);
+
+        }
+    }
 }
