@@ -5,12 +5,16 @@ public class Card : MonoBehaviour{
 
     public bool Played = false;
     public int HandIndex;
+    public int CardActionCount;
 
     private CardManager CM;
+    private TurnManager TM;
     
 
     void Start(){
         CM = FindObjectOfType<CardManager>();
+        TM = FindObjectOfType<TurnManager>();
+        CardActionCount = gameObject.GetComponent<CardInfo>().CardActionCount;
     }
 
     //When the mouse clicks the card it moves the card up so user can see it has been played and tells the hand what slot is now free
@@ -18,11 +22,27 @@ public class Card : MonoBehaviour{
     void OnMouseDown(){
         //Debug.Log(this + " has been Clicked!");
         if(!Played){
-            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 3.3f), 1);
 
             Played = !Played;
+            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 3.3f), 1);
+
+            TM.CurrentActionCount += CardActionCount;
+
+            if(TM.OverMaxActionCount()){
+                Played = !Played;
+                transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.down * 3.3f), 1);
+
+                Debug.Log("Exceeds Max Action Count");
+                TM.CurrentActionCount -= CardActionCount;
+
+                return;
+            }
+
+            TM.UpdateActionText(TM.CurrentActionCount);
+
             CM.AvailableCardSlots[HandIndex] = Played;
             CM.CardSlots[HandIndex].gameObject.SetActive(Played);
+            
 
             Debug.Log(DamageRoll(gameObject.GetComponent<CardInfo>().CardDamage));
             Invoke("DiscardCard", 2f);

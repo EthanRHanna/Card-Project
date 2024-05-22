@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CardInfo : MonoBehaviour
-{
+public class CardInfo : MonoBehaviour{
+    
     [SerializeField]
     public string CardName;
 
@@ -14,6 +14,9 @@ public class CardInfo : MonoBehaviour
 
     [SerializeField]
     public string CardElement;
+
+    [SerializeField]
+    public int CardActionCount;
 
     [SerializeField]
     public bool isSpell;
@@ -30,6 +33,7 @@ public class CardInfo : MonoBehaviour
             CardInfo.CardName = EditorGUILayout.TextField("Name of Card", CardInfo.CardName);
             CardInfo.CardDamage = EditorGUILayout.TextField("Damage of the Card", CardInfo.CardDamage);
             CardInfo.CardElement = EditorGUILayout.TextField("Element of the Card", CardInfo.CardElement);
+            CardInfo.CardActionCount = EditorGUILayout.IntField("Amount of Actions", CardInfo.CardActionCount);
 
             CardInfo.isSpell = EditorGUILayout.Toggle("Is Spell", CardInfo.isSpell);
 

@@ -15,12 +15,7 @@ public class CardManager : MonoBehaviour
 
     //Sets total deck size, and draws cards if there are slots open
     private void Start(){
-        TotalDeckAmount = Deck.Count;
-
-        foreach(bool Slot in AvailableCardSlots){
-            if(Slot)
-                DrawCard();
-        }
+        FillHand();
     }
 
     //Automaic shuffle to readd cards from the Discard pile when there is more than half of the starting deck inside of the discard pile
@@ -31,7 +26,7 @@ public class CardManager : MonoBehaviour
     }
 
     //Draws a card form the deck and moves it on to the hand postions
-    public void DrawCard(){
+    private void DrawCard(){
         if(Deck.Count >= 1){
             Card RandomCard = Deck[Random.Range(0, Deck.Count)];
             //Debug.Log(RandomCard + " has been Drawn!");
@@ -53,7 +48,6 @@ public class CardManager : MonoBehaviour
         }
     }
 
-
     //Moves cards from the Discard Pile into the Deck to be played again
     private void Shuffle(){
         Debug.Log("Suffle!");
@@ -63,6 +57,15 @@ public class CardManager : MonoBehaviour
         }
 
         DiscardPile.Clear();
+    }
+
+    public void FillHand(){
+        TotalDeckAmount = Deck.Count;
+
+        foreach(bool Slot in AvailableCardSlots){
+            if(Slot)
+                DrawCard();
+        }
     }
 
 }
