@@ -9,11 +9,13 @@ public class Card : MonoBehaviour{
 
     private CardManager CM;
     private TurnManager TM;
+    private CardInfo CI;
     
 
     void Start(){
         CM = FindObjectOfType<CardManager>();
         TM = FindObjectOfType<TurnManager>();
+        CI = gameObject.GetComponent<CardInfo>();
         CardActionCount = gameObject.GetComponent<CardInfo>().CardActionCount;
     }
 
@@ -41,12 +43,13 @@ public class Card : MonoBehaviour{
 
             //Updates the Action text to show how much is left
             TM.UpdateActionText();
+            TM.ShowOnMoreInfo(gameObject, CI.CardName, CI.CardDamage, CI.CardElement, CI.CardActionCount.ToString(), CI.isSpell, CI.SpellTier.ToString() );
 
             CM.AvailableCardSlots[HandIndex] = Played;
             CM.CardSlots[HandIndex].gameObject.SetActive(Played);
             
 
-            Debug.Log(DamageRoll(gameObject.GetComponent<CardInfo>().CardDamage));
+            Debug.Log(DamageRoll(CI.CardDamage));
             Invoke("DiscardCard", 2f);
         }
     }
