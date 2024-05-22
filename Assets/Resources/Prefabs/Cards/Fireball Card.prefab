@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 595140bca508d1649b9c92c1ee849feb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07616cc77845e3e4786da47c2fb92a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   CardName: FireBall
   CardDamage: 2D6
   CardElement: Fire
+  CardActionCount: 2
   isSpell: 1
   SpellTier: 3
 --- !u!114 &7428894282437950664
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Played: 0
   HandIndex: 0
+  CardActionCount: 0
 --- !u!61 &8197117180912086578
 BoxCollider2D:
   m_ObjectHideFlags: 0
