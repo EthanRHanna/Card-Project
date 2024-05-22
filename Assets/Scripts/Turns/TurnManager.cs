@@ -17,8 +17,8 @@ public class TurnManager : MonoBehaviour{
         CurrentActionCount = 0;
     }
 
-    public void UpdateActionText(int CurrentActionCount){
-        ShownActionCount.gameObject.GetComponent<TextMeshProUGUI>().text = CurrentActionCount.ToString();
+    public void UpdateActionText(){
+        ShownActionCount.GetComponent<TextMeshProUGUI>().text = CurrentActionCount.ToString();
     }
 
     public bool OverMaxActionCount(){
@@ -28,6 +28,7 @@ public class TurnManager : MonoBehaviour{
     public void EndTurn(){
         Debug.Log("Ended Turn!");
         CurrentActionCount = 0;
+        UpdateActionText();
     }
 
 }

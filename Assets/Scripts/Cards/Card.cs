@@ -28,6 +28,7 @@ public class Card : MonoBehaviour{
 
             TM.CurrentActionCount += CardActionCount;
 
+            //Check to see if there is enough action points left to play the card the user selected
             if(TM.OverMaxActionCount()){
                 Played = !Played;
                 transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.down * 3.3f), 1);
@@ -38,7 +39,8 @@ public class Card : MonoBehaviour{
                 return;
             }
 
-            TM.UpdateActionText(TM.CurrentActionCount);
+            //Updates the Action text to show how much is left
+            TM.UpdateActionText();
 
             CM.AvailableCardSlots[HandIndex] = Played;
             CM.CardSlots[HandIndex].gameObject.SetActive(Played);
@@ -80,5 +82,9 @@ public class Card : MonoBehaviour{
         //Debug.Log(Type);
 
         return Tuple.Create(Convert.ToInt32(Amount), Convert.ToInt32(Type));
+    }
+
+    private void MoreInfo(){
+        GameObject.Find("Card Viewer");
     }
 }
