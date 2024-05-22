@@ -445,6 +445,12 @@ MonoBehaviour:
   CurrentActionCount: 0
   ShownActionCount: {fileID: 674404361}
   CardViewer: {fileID: 478200884}
+  Name: {fileID: 610935870}
+  Damage: {fileID: 1034894958}
+  Element: {fileID: 964038615}
+  ActionCost: {fileID: 1842037175}
+  IsSpell: {fileID: 919986468}
+  SpellTier: {fileID: 344071148}
 --- !u!1 &344071148
 GameObject:
   m_ObjectHideFlags: 0
