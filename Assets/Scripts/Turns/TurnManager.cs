@@ -13,6 +13,9 @@ public class TurnManager : MonoBehaviour{
     [SerializeField]
     public GameObject ShownActionCount;
 
+    [SerializeField]
+    public GameObject MoreInfoPanel;
+
     private void Start(){
         CurrentActionCount = 0;
     }
