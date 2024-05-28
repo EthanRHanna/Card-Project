@@ -48,7 +48,6 @@ public class CardManager : MonoBehaviour
         }
     }
 
-
     //Moves cards from the Discard Pile into the Deck to be played again
     private void Shuffle(){
         Debug.Log("Suffle!");

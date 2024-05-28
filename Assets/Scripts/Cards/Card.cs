@@ -9,8 +9,7 @@ public class Card : MonoBehaviour{
 
     private CardManager CM;
     private TurnManager TM;
-    private CardInfo CI;
-    
+    private CardInfo CI;    
 
     void Start(){
         CM = FindObjectOfType<CardManager>();
@@ -87,7 +86,4 @@ public class Card : MonoBehaviour{
         return Tuple.Create(Convert.ToInt32(Amount), Convert.ToInt32(Type));
     }
 
-    private void MoreInfo(){
-        GameObject.Find("Card Viewer");
-    }
 }
