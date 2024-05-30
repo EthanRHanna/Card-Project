@@ -19,16 +19,34 @@ public class TurnManager : MonoBehaviour{
     private void Start(){
         state = TurnState.Start;
         CurrentActionCount = 0;
-    }
 
-    public bool OverMaxActionCount(){
-        return (CurrentActionCount > MaxActions) ? true : false; 
+        //Do Start-Up Stuff
+
+        //Initiative is: 1D20 + Perception Skill Proficency + Wisdom Modifier + Speed/2
+        //Make a list of everyone and sort from Greatest to Least
+        //Follow this list from left to right
+
+        //Initiative is tied to the player and enemy
     }
 
     public void EndTurn(){
         Debug.Log("Ended Turn!");
+
         CurrentActionCount = 0;
         TMUI.UpdateActionText();
+        /*
+        if(EnemyManager.allEnemiesDead()){
+            state = TurnState.Won;
+        }else{
+            state = TurnState.EnemyTurn;
+        }
+        */
+    } 
+
+
+    //-------- Extra Functions ---------\\
+    public bool OverMaxActionCount(){
+        return (CurrentActionCount > MaxActions) ? true : false; 
     }
 
 }

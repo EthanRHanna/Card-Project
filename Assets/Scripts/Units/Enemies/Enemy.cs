@@ -1,24 +1,12 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour{
-
-    public int Level;
-    public int MaxHealth;
-    public int CurrentHealth;
-    public int AC;
-    public int Speed;
-    public int AttackBonus;
-    public Attributes Attributes;
-    public Saves Saves;
-    public Skills Skills;
-
-    public string BasicAttackDamage;
+public class Enemy : Unit{
 
     private int LevelModifier;
 
-
-    public Enemy(int Level, int MaxHealth, int AC, int Speed, int AttackBonus ,Attributes Attributes, Saves Saves, Skills Skills){
+    public Enemy(int Level, int MaxHealth, int AC, int Speed, int AttackBonus, Attributes Attributes, Saves Saves, Skills Skills) : base(Level, MaxHealth, AC, Speed, AttackBonus, Attributes, Saves, Skills)
+    {
         this.Level = Level;
         LevelModifier = Level - 1;
 
@@ -41,11 +29,14 @@ public class Enemy : MonoBehaviour{
         this.Skills = Skills;
     }
 
-    public void basicAttack(){
-
+    public void basicAttack(string Damage){
+        rollingDamage(Damage);
     }
 
-    public int rollingDamage(String UnrolledDamage){
+    public int rollingDamage(string UnrolledDamage){
+
+        //Debug.Log(UnrolledDamage);
+
         int Damage  = 0;
         var DamageTuple = ParseDamge(UnrolledDamage.ToUpper());
         int AmountofDice = DamageTuple.Item1;
