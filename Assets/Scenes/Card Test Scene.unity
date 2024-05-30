@@ -3555,7 +3555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7993590807598707491, guid: 5c64cde16a57ca245933a46f3bb215b8, type: 3}
       propertyPath: Level
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7993590807598707491, guid: 5c64cde16a57ca245933a46f3bb215b8, type: 3}
       propertyPath: AttackBonus
