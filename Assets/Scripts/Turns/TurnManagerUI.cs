@@ -3,8 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurnManagerUI : MonoBehaviour
-{
+public class TurnManagerUI : MonoBehaviour{
 
     public TurnManager TM;
 

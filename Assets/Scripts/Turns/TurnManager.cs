@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -6,7 +7,7 @@ public enum TurnState { Start, PlayerTurn, EnemyTurn, Won, Lost}
 
 public class TurnManager : MonoBehaviour{
 
-    private TurnManagerUI TMUI;
+    public TurnManagerUI TMUI;
 
     public TurnState state;
 
