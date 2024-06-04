@@ -35,7 +35,7 @@ public class Enemy : Unit{
 
     public int rollingDamage(string UnrolledDamage){
 
-        //Debug.Log(UnrolledDamage);
+        //Debug.Log(UnrolledDamage); test
 
         int Damage  = 0;
         var DamageTuple = ParseDamge(UnrolledDamage.ToUpper());
