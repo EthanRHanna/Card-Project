@@ -44,7 +44,6 @@ public class Card : MonoBehaviour{
 
             //Updates the Action text to show how much is left
             TMUI.UpdateActionText();
-            TMUI.ShowOnMoreInfo(gameObject, CI.CardName, CI.CardDamage, CI.CardElement, CI.CardActionCount.ToString(), CI.isSpell, CI.SpellTier.ToString() );
 
             CM.AvailableCardSlots[HandIndex] = Played;
             CM.CardSlots[HandIndex].gameObject.SetActive(Played);
@@ -55,6 +54,14 @@ public class Card : MonoBehaviour{
         }
     }
 
+    void OnMouseOver(){
+        TMUI.ShowOnMoreInfo(gameObject, CI.CardName, CI.CardDamage, CI.CardElement, CI.CardActionCount.ToString(), CI.isSpell, CI.SpellTier.ToString() );
+    }
+
+    void OnMouseExit(){
+        TMUI.ShowOnMoreInfo(null, "", "", "", "", false, "");
+    }
+
     //Method for adding the card into the discard pile
     private void DiscardCard(){
         //Debug.Log(this + " has benn Discarded!");
@@ -62,6 +69,7 @@ public class Card : MonoBehaviour{
         CM.DiscardPile.Add(this);
         gameObject.SetActive(!Played);
     }
+
 
     //"Rolls" the damage for the card that is played
     private int DamageRoll(String UnrolledDamage){

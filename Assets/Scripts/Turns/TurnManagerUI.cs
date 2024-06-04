@@ -38,19 +38,31 @@ public class TurnManagerUI : MonoBehaviour{
     }
 
     public void ShowOnMoreInfo(GameObject Card, String CardName, String CardDamage, String CardElement, String CardActionCost, bool CardSpell, String CardSpellTier){
-        CardViewer.GetComponent<Image>().sprite = Card.GetComponent<SpriteRenderer>().sprite;
+        if (Card){
+            CardViewer.GetComponent<Image>().sprite = Card.GetComponent<SpriteRenderer>().sprite;
 
-        Name.GetComponent<TextMeshProUGUI>().text = "Card Name: " + CardName;
-        Damage.GetComponent<TextMeshProUGUI>().text = "Card Damage: " + CardDamage;
-        Element.GetComponent<TextMeshProUGUI>().text = "Card Element: " + CardElement;
-        ActionCost.GetComponent<TextMeshProUGUI>().text = "Card Action Cost: " + CardActionCost;
+            Name.GetComponent<TextMeshProUGUI>().text = "Card Name: " + CardName;
+            Damage.GetComponent<TextMeshProUGUI>().text = "Card Damage: " + CardDamage;
+            Element.GetComponent<TextMeshProUGUI>().text = "Card Element: " + CardElement;
+            ActionCost.GetComponent<TextMeshProUGUI>().text = "Card Action Cost: " + CardActionCost;
 
-        if (CardSpell)
-            IsSpell.GetComponent<TextMeshProUGUI>().text = "It is a Spell";
-        else
-            IsSpell.GetComponent<TextMeshProUGUI>().text = "It is not a Spell";
-        
-        SpellTier.GetComponent<TextMeshProUGUI>().text = "Card Spell Tier: " + CardSpellTier;
+            if (CardSpell){
+                IsSpell.GetComponent<TextMeshProUGUI>().text = "It is a Spell";
+                SpellTier.GetComponent<TextMeshProUGUI>().text = "Card Spell Tier: " + CardSpellTier;
+            }else{
+                IsSpell.GetComponent<TextMeshProUGUI>().text = "It is not a Spell";
+                SpellTier.GetComponent<TextMeshProUGUI>().text = null;
+            }
+            
+        }else{
+            CardViewer.GetComponent<Image>().sprite = null;
+            Name.GetComponent<TextMeshProUGUI>().text = null;
+            Damage.GetComponent<TextMeshProUGUI>().text = null;
+            Element.GetComponent<TextMeshProUGUI>().text = null;
+            ActionCost.GetComponent<TextMeshProUGUI>().text = null;
+            IsSpell.GetComponent<TextMeshProUGUI>().text = null;
+            SpellTier.GetComponent<TextMeshProUGUI>().text = null;
+        }
 
     }
 }
