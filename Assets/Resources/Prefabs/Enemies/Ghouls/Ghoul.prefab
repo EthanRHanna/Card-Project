@@ -102,11 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   MaxHealth: 20
+  CurrentHealth: 0
   AC: 16
   Speed: 30
+  AttackBonus: 0
   Attributes: {fileID: 5212553204546128756}
   Saves: {fileID: 2900212748697872558}
   Skills: {fileID: 9130291576781323033}
+  BasicAttackDamage: 1D4+1
 --- !u!114 &5212553204546128756
 MonoBehaviour:
   m_ObjectHideFlags: 0
