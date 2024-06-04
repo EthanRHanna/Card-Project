@@ -7,8 +7,11 @@ public class EnemyManager : MonoBehaviour{
     public List<Enemy> CurrentEnemies = new List<Enemy>();
     public List<bool> DeadEnemies = new List<bool>();
 
+    private void Start(){
+        CurrentEnemies = getAllEnemies();
+    }
 
-    public bool allEnemiesDead(){
+    public bool areAllEnemiesDead(){
         bool AllDead = false;
 
         foreach (bool Status in DeadEnemies){
@@ -22,5 +25,16 @@ public class EnemyManager : MonoBehaviour{
         return AllDead;
     }
 
-    
+    private List<Enemy> getAllEnemies(){
+        List<Enemy> AllEnemies = new List<Enemy>();
+        GameObject EnemyPool = GameObject.Find("Enemies");
+
+        for(int i = 0; i < EnemyPool.transform.childCount; i++ ){
+            //Debug.Log(EnemyPool.transform.GetChild(i).GetComponent<Enemy>());
+            AllEnemies.Add(EnemyPool.transform.GetChild(i).GetComponent<Enemy>());
+        }
+
+        return AllEnemies;
+    }
+
 }

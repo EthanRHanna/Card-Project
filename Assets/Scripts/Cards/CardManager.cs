@@ -4,7 +4,7 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     [SerializeField]
-    public List<Card> Deck = new List<Card>();
+    private List<Card> Deck = new List<Card>();
     [SerializeField]
     public Transform[] CardSlots;
 
@@ -15,6 +15,8 @@ public class CardManager : MonoBehaviour
 
     //Sets total deck size, and draws cards if there are slots open
     private void Start(){
+        Deck = getAllCards();
+        //Debug.Log(Deck.Count);
         FillHand();
     }
 
@@ -57,6 +59,18 @@ public class CardManager : MonoBehaviour
         }
 
         DiscardPile.Clear();
+    }
+
+    private List<Card> getAllCards(){
+        List<Card> AllCards = new List<Card>();
+        GameObject DeckOfCards = GameObject.Find("Player Deck");
+
+        for(int i = 0; i < DeckOfCards.transform.childCount; i++ ){
+            //Debug.Log(DeckOfCards.transform.GetChild(i).GetComponent<Card>());
+            AllCards.Add(DeckOfCards.transform.GetChild(i).GetComponent<Card>());
+        }
+
+        return AllCards;
     }
 
     public void FillHand(){

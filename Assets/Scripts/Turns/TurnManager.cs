@@ -35,7 +35,7 @@ public class TurnManager : MonoBehaviour{
         CurrentActionCount = 0;
         TMUI.UpdateActionText();
         /*
-        if(EnemyManager.allEnemiesDead()){
+        if(EnemyManager.areAllEnemiesDead()){
             state = TurnState.Won;
         }else{
             state = TurnState.EnemyTurn;
