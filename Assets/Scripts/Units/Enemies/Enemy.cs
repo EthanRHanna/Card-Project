@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Unit{
 
@@ -61,5 +62,7 @@ public class Enemy : Unit{
 
         return Tuple.Create(Convert.ToInt32(Amount), Convert.ToInt32(Type), Convert.ToInt32(Extra));
     }
-    
+
+
+
 }
