@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -8,8 +9,10 @@ public enum TurnState { Start, PlayerTurn, EnemyTurn, Won, Lost}
 public class TurnManager : MonoBehaviour{
 
     public TurnManagerUI TMUI;
-
     public TurnState state;
+    private Player player;
+    private EnemyManager enemyManager;
+    public List<Unit> InitiativeList = new List<Unit>();
 
     //-------------- Action Stuff --------------\\
     private const int MaxActions = 3;
@@ -20,6 +23,11 @@ public class TurnManager : MonoBehaviour{
         state = TurnState.Start;
         CurrentActionCount = 0;
 
+        player = GameObject.Find("Player").GetComponent<Player>();
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+
+        InitiativeList = allRollInitiative();
+        //Debug.Log(InitiativeList.Count);
         //Do Start-Up Stuff
 
         //Initiative is: 1D20 + Perception Skill Proficency + Wisdom Modifier + Speed/2
@@ -47,6 +55,27 @@ public class TurnManager : MonoBehaviour{
     //-------- Extra Functions ---------\\
     public bool OverMaxActionCount(){
         return (CurrentActionCount > MaxActions) ? true : false; 
+    }
+
+    private List<Unit> allRollInitiative(){
+        List<Unit> InitiativeList = new List<Unit>();
+
+        //All Enemies and Player roll initiative
+        player.rollInitiative();
+        Debug.Log(player.Initiative + "" + player.name);
+        InitiativeList.Add(player);
+
+        foreach(Enemy enemy in enemyManager.getAllEnemies()){
+            enemy.rollInitiative();
+            Debug.Log(enemy.Initiative + " " + enemy.name);
+            InitiativeList.Add(enemy);
+        }
+
+        //Sort Initiative List by Highest Initiative to Lowest
+        //InitiativeList.Sort(x -> x.Initiative);
+        InitiativeList.Reverse();
+
+        return InitiativeList;
     }
 
 }

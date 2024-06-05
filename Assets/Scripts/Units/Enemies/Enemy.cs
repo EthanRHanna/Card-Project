@@ -48,7 +48,7 @@ public class Enemy : Unit{
             Damage += UnityEngine.Random.Range(1, TypeofDice+1);
         }
 
-        Debug.Log("Total Damage: "  + (Damage + LevelModifier + ExtraDamage) + "\nRolled Damage: " + Damage + ", Level Modifier: " + LevelModifier + ", Extra Damage: " +  ExtraDamage );
+        //Debug.Log("Total Damage: "  + (Damage + LevelModifier + ExtraDamage) + "\nRolled Damage: " + Damage + ", Level Modifier: " + LevelModifier + ", Extra Damage: " +  ExtraDamage );
         return Damage + LevelModifier + ExtraDamage;
     }
 

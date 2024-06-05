@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour{
     }
 
     //Looks of "Enemies" and takes all of it's children as Enemy to fill the CurrentEnemies list without someone setting it in the inspector
-    private List<Enemy> getAllEnemies(){
+    public List<Enemy> getAllEnemies(){
         List<Enemy> AllEnemies = new List<Enemy>();
         GameObject EnemyPool = GameObject.Find("Enemies");
 

@@ -300,6 +300,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265783376}
+  - component: {fileID: 265783380}
+  - component: {fileID: 265783379}
+  - component: {fileID: 265783378}
+  - component: {fileID: 265783377}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -324,6 +328,91 @@ Transform:
   - {fileID: 669877479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265783377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265783375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92648e091042fa74c908047c93e601a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Acrobatics: Trained
+  Arcana: Trained
+  Athletics: Trained
+  Crafting: Trained
+  Deception: Trained
+  Diplomacy: Trained
+  Intimdation: Trained
+  Lore: Trained
+  Medicaine: Trained
+  Nature: Trained
+  Occultism: Trained
+  Perception: Trained
+  Preformance: Trained
+  Religion: Trained
+  Society: Trained
+  Stealth: Trained
+  Survival: Trained
+  Thievery: Trained
+--- !u!114 &265783378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265783375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa298dfef02105f40a7ee08220909baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fortitude: 10
+  Reflex: 10
+  Will: 10
+--- !u!114 &265783379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265783375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae18920f131fee479fdb6fbe09960b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Strength: 10
+  Dexterity: 10
+  Constitution: 10
+  Intelligence: 10
+  Wisdom: 10
+  Charisma: 10
+--- !u!114 &265783380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265783375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e802bae5322c94c875b4e080fc73d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 1
+  MaxHealth: 20
+  CurrentHealth: 0
+  AC: 16
+  Speed: 25
+  AttackBonus: 3
+  Attributes: {fileID: 265783379}
+  Saves: {fileID: 265783378}
+  Skills: {fileID: 265783377}
+  Initiative: 0
 --- !u!1 &320544765
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TMUI: {fileID: 323180880}
   state: 0
+  InitiativeList: []
   CurrentActionCount: 0
 --- !u!1 &344071148
 GameObject:
