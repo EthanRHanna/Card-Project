@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -62,19 +63,25 @@ public class TurnManager : MonoBehaviour{
 
         //All Enemies and Player roll initiative
         player.rollInitiative();
-        Debug.Log(player.Initiative + "" + player.name);
+        //Debug.Log(player.Initiative + "" + player.name);
         InitiativeList.Add(player);
 
         foreach(Enemy enemy in enemyManager.getAllEnemies()){
             enemy.rollInitiative();
-            Debug.Log(enemy.Initiative + " " + enemy.name);
+            //Debug.Log(enemy.Initiative + " " + enemy.name);
             InitiativeList.Add(enemy);
         }
 
         //Sort Initiative List by Highest Initiative to Lowest
-        //InitiativeList.Sort(x -> x.Initiative);
+        InitiativeList.OrderBy(x => x.Initiative).ToList();
         InitiativeList.Reverse();
 
+        /*
+        //Uses this to check the order of Initiative (High to Low)
+        for(int i = 0; i < InitiativeList.Count; i++){
+            Debug.Log(InitiativeList[i].name + " " + InitiativeList[i].Initiative);
+        }
+        */
         return InitiativeList;
     }
 
