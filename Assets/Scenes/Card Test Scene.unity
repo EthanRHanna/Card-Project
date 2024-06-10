@@ -413,6 +413,10 @@ MonoBehaviour:
   Saves: {fileID: 265783378}
   Skills: {fileID: 265783377}
   Initiative: 0
+  Class: 
+  Archetype: 
+  Background: 
+  Ancestry: 
 --- !u!1 &320544765
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +595,7 @@ MonoBehaviour:
   state: 0
   InitiativeList: []
   CurrentActionCount: 0
+  EndTurnButton: {fileID: 0}
 --- !u!1 &344071148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,7 +2055,7 @@ GameObject:
   - component: {fileID: 1305358740}
   - component: {fileID: 1305358739}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EndTurnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

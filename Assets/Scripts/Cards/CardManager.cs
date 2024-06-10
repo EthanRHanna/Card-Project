@@ -14,8 +14,8 @@ public class CardManager : MonoBehaviour
     private int TotalDeckAmount;
 
     //Sets total deck size, and draws cards if there are slots open
-    private void Start(){
-        Deck = getAllCards();
+    public void GetPlayerHand(){
+        Deck = GetAllCards();
         //Debug.Log(Deck.Count);
         FillHand();
     }
@@ -62,7 +62,7 @@ public class CardManager : MonoBehaviour
     }
 
     //Looks of "Player Deck" and takes all of it's children as cards to fill the Deck list without someone setting it in the inspector
-    private List<Card> getAllCards(){
+    private List<Card> GetAllCards(){
         List<Card> AllCards = new List<Card>();
         GameObject DeckOfCards = GameObject.Find("Player Deck");
 
@@ -74,7 +74,7 @@ public class CardManager : MonoBehaviour
         return AllCards;
     }
 
-    public void FillHand(){
+    private void FillHand(){
         TotalDeckAmount = Deck.Count;
 
         foreach(bool Slot in AvailableCardSlots){
