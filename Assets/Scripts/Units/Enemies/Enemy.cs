@@ -31,38 +31,7 @@ public class Enemy : Unit{
     }
 
     public int basicAttack(string Damage){
-        return rollingDamage(Damage);
+        return DamageRolls.DamageRoll(Damage, LevelModifier);
     }
-
-    public int rollingDamage(string UnrolledDamage){
-
-        //Debug.Log(UnrolledDamage); test
-
-        int Damage  = 0;
-        var DamageTuple = ParseDamge(UnrolledDamage.ToUpper());
-        int AmountofDice = DamageTuple.Item1;
-        int TypeofDice = DamageTuple.Item2;
-        int ExtraDamage = DamageTuple.Item3;
-
-        for(int i = 0; i < AmountofDice; i++){
-            Damage += UnityEngine.Random.Range(1, TypeofDice+1);
-        }
-
-        //Debug.Log("Total Damage: "  + (Damage + LevelModifier + ExtraDamage) + "\nRolled Damage: " + Damage + ", Level Modifier: " + LevelModifier + ", Extra Damage: " +  ExtraDamage );
-        return Damage + LevelModifier + ExtraDamage;
-    }
-
-    private Tuple<int, int, int> ParseDamge(String UnrolledDamage){
-        String Amount = UnrolledDamage.Substring(0, UnrolledDamage.IndexOf("D"));
-        //Debug.Log(Amount);
-        String Type = UnrolledDamage.Substring(UnrolledDamage.IndexOf("D") + 1, 1);
-        //Debug.Log(Type);
-        String Extra = UnrolledDamage.Substring(UnrolledDamage.IndexOf("+") + 1);
-        //Debug.Log(Extra);
-
-        return Tuple.Create(Convert.ToInt32(Amount), Convert.ToInt32(Type), Convert.ToInt32(Extra));
-    }
-
-
 
 }

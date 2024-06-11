@@ -45,8 +45,8 @@ public class TurnManager : MonoBehaviour{
         InitiativeList = AllRollInitiative();
         //Debug.Log(InitiativeList.Count);
 
-        StartCoroutine(goingThroughTurnOrder());
-
+        //StartCoroutine(goingThroughTurnOrder());
+        cardManager.GetPlayerHand();
     }
 
     IEnumerator goingThroughTurnOrder(){
