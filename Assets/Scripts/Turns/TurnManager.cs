@@ -25,7 +25,6 @@ public class TurnManager : MonoBehaviour{
 
     //------------- End Turn Stuff -------------\\
     public Button EndTurnButton;
-    bool ended = false;
 
 
 
