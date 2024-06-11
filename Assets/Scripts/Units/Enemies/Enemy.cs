@@ -30,8 +30,8 @@ public class Enemy : Unit{
         this.Skills = Skills;
     }
 
-    public void basicAttack(string Damage){
-        rollingDamage(Damage);
+    public int basicAttack(string Damage){
+        return rollingDamage(Damage);
     }
 
     public int rollingDamage(string UnrolledDamage){

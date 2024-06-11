@@ -25,7 +25,7 @@ public class TurnManager : MonoBehaviour{
 
     //------------- End Turn Stuff -------------\\
     public Button EndTurnButton;
-    //private WaitForUIButtons waitForUIButton;
+    bool ended = false;
 
 
 
@@ -46,40 +46,30 @@ public class TurnManager : MonoBehaviour{
         InitiativeList = AllRollInitiative();
         //Debug.Log(InitiativeList.Count);
 
-        goingThroughTurnOrder();
+        StartCoroutine(goingThroughTurnOrder());
 
     }
 
-    private void goingThroughTurnOrder(){
+    IEnumerator goingThroughTurnOrder(){
         for(int i = 0; i < InitiativeList.Count; i++){
-
             //Debug.Log(InitiativeList[i] + "'s Turn" + "\nIndex: " + i);
 
-            if(InitiativeList[i] is Player){
-                state = TurnState.PlayerTurn;
-                PlayerTurn();
-            }else{
-                state = TurnState.EnemyTurn;
-                Debug.Log(state);
-                //EnemyTurn(unit)
+            //Check to see if the current unit is a Player or Enemy
+            if(InitiativeList[i] is Enemy){
+                //The AI needs to make a move for the forloop to move on.
+                Debug.Log("Waiting for Enemy");
+                yield return new WaitForSeconds(30);
+                Debug.Log("Enemy's Turn is Done");
+            }else if(InitiativeList[i] is Player){
+                //The forloop needs to wait for the player to hit the End Turn button before it is allowed to continue
+                Debug.Log("Waiting for Player");
+                yield return new WaitForSeconds(10);
+                Debug.Log("Player's Turn is Done");
+
             }
         }
     }
 
-
-   private void PlayerTurn(){
-        cardManager.GetPlayerHand();
-        StartCoroutine(WaitingForPress());
-    }
-
-    IEnumerator WaitingForPress(){
-        //waitForUIButton = ;
-        yield return new WaitForUIButtons(EndTurnButton);
-    }
-
-    private void EnemyTurn(){
-
-    }
 
     public void EndTurn(){
         Debug.Log("Ended Turn!");
@@ -99,8 +89,8 @@ public class TurnManager : MonoBehaviour{
 
         //All Enemies and Player roll initiative
         foreach(Enemy enemy in enemyManager.getAllEnemies()){
-            enemy.Initiative = 1;
-            //enemy.rollInitiative();
+            //enemy.Initiative = 1;
+            enemy.rollInitiative();
             //Debug.Log(enemy.Initiative + " " + enemy.name);
             InitiativeList.Add(enemy);
         }
