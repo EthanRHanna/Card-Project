@@ -87,7 +87,7 @@ public class TurnManager : MonoBehaviour{
         List<Unit> InitiativeList = new List<Unit>();
 
         //All Enemies and Player roll initiative
-        foreach(Enemy enemy in enemyManager.getAllEnemies()){
+        foreach(Enemy enemy in enemyManager.CurrentEnemies){
             //enemy.Initiative = 1;
             enemy.rollInitiative();
             //Debug.Log(enemy.Initiative + " " + enemy.name);

@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
-{
+public class Unit : MonoBehaviour{
 
-    public int Level;
+    protected int Level;
     public int MaxHealth;
     public int CurrentHealth;
-    public int AC;
-    public int Speed;
-    public int AttackBonus;
-    public Attributes Attributes;
-    public Saves Saves;
-    public Skills Skills;
+    protected int AC;
+    protected int Speed;
+    protected int AttackBonus;
+    protected Attributes Attributes;
+    protected Saves Saves;
+    protected Skills Skills;
 
     public int Initiative;
 
-    public Unit(int Level, int MaxHealth, int AC, int Speed, int AttackBonus ,Attributes Attributes, Saves Saves, Skills Skills){
+    protected Unit(int Level, int MaxHealth, int AC, int Speed, int AttackBonus ,Attributes Attributes, Saves Saves, Skills Skills){
         this.Level = Level;
 
         this.MaxHealth = MaxHealth;

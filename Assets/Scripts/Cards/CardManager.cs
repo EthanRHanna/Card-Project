@@ -1,86 +1,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardManager : MonoBehaviour
-{
-    [SerializeField]
-    private List<Card> Deck = new List<Card>();
+public class CardManager : MonoBehaviour{
+
+    private CMInvoker _CMInvoker;
+
     [SerializeField]
     public Transform[] CardSlots;
-
+    public List<Card> Deck = new List<Card>();
     public bool[] AvailableCardSlots;
     public List<Card> DiscardPile = new List<Card>();
 
-    private int TotalDeckAmount;
+
+    private void Start(){
+        _CMInvoker = new CMInvoker(this);
+    }
 
     //Sets total deck size, and draws cards if there are slots open
     public void GetPlayerHand(){
-        Deck = GetAllCards();
-        //Debug.Log(Deck.Count);
-        FillHand();
+        Deck = GetAll.GetAllCards();
+        _CMInvoker.FillHand();
     }
 
     //Automaic shuffle to readd cards from the Discard pile when there is more than half of the starting deck inside of the discard pile
     private void Update(){
-        if(DiscardPile.Count > TotalDeckAmount / 2){
+        if(DiscardPile.Count > Deck.Count / 2){
             Shuffle();
-        }
-    }
-
-    //Draws a card form the deck and moves it on to the hand postions
-    private void DrawCard(){
-        if(Deck.Count >= 1){
-            Card RandomCard = Deck[Random.Range(0, Deck.Count)];
-            //Debug.Log(RandomCard + " has been Drawn!");
-
-            for (int i = 0; i < AvailableCardSlots.Length; i++){
-                if(AvailableCardSlots[i]){
-                    RandomCard.gameObject.SetActive(true);
-                    RandomCard.transform.position = CardSlots[i].position;
-
-                    RandomCard.HandIndex = i;
-                    CardSlots[i].gameObject.SetActive(false);
-                    
-
-                    AvailableCardSlots[i] = false;
-                    Deck.Remove(RandomCard);
-                    return;
-                }
-            }
         }
     }
 
     //Moves cards from the Discard Pile into the Deck to be played again
     private void Shuffle(){
-        Debug.Log("Suffle!");
-        foreach(Card card in DiscardPile){
-            card.Played = false;
-            Deck.Add(card);
-        }
-
-        DiscardPile.Clear();
+        _CMInvoker.Shuffle();
     }
 
-    //Looks of "Player Deck" and takes all of it's children as cards to fill the Deck list without someone setting it in the inspector
-    private List<Card> GetAllCards(){
-        List<Card> AllCards = new List<Card>();
-        GameObject DeckOfCards = GameObject.Find("Player Deck");
-
-        for(int i = 0; i < DeckOfCards.transform.childCount; i++ ){
-            //Debug.Log(DeckOfCards.transform.GetChild(i).GetComponent<Card>());
-            AllCards.Add(DeckOfCards.transform.GetChild(i).GetComponent<Card>());
-        }
-
-        return AllCards;
-    }
-
-    private void FillHand(){
-        TotalDeckAmount = Deck.Count;
-
-        foreach(bool Slot in AvailableCardSlots){
-            if(Slot)
-                DrawCard();
-        }
-    }
+    
 
 }

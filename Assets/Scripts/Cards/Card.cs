@@ -1,17 +1,17 @@
-using System;
 using UnityEngine;
 
+//Redid this Class by implementing the Command Pattern
+//This Class is was the Test Class for the Command Pattern, I don't think I needed it but it allowed for more features to be added to this class thanks to it
 public class Card : MonoBehaviour{
 
     public bool Played = false;
     public int HandIndex;
-    public int CardActionCount;
 
     public CardManager CM;
-    private TurnManager TM;
     public TurnManagerUI TMUI;
     public CardInfo CI;
     private CardInoker _CardInvoker;
+    private TurnManager TM;
     
 
     void Start(){
@@ -19,7 +19,6 @@ public class Card : MonoBehaviour{
         TM = FindObjectOfType<TurnManager>();
         TMUI = FindObjectOfType<TurnManagerUI>();
         CI = gameObject.GetComponent<CardInfo>();
-        CardActionCount = gameObject.GetComponent<CardInfo>().CardActionCount;
 
         
         _CardInvoker = new CardInoker();
@@ -44,50 +43,19 @@ public class Card : MonoBehaviour{
             _CardInvoker.RemoveCommand();
         }
 
-    }
+        Invoke("DiscardCard", 60f);
 
-   
+    }
 
     //Method for adding the card into the discard pile
     private void DiscardCard(){
-        //Debug.Log(this + " has benn Discarded!");
+        if (Played){
+        Debug.Log(this + " has benn Discarded!");
 
         CM.DiscardPile.Add(this);
         gameObject.SetActive(!Played);
+        }
     }
 
 
 }
-/*
-
-//Debug.Log(this + " has been Clicked!");
-        if(!Played){
-
-            Played = !Played;
-            transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.up * 3.3f), 1);
-
-            TM.CurrentActionCount += CardActionCount;
-
-            //Check to see if there is enough action points left to play the card the user selected
-            if(TM.OverMaxActionCount()){
-                Played = !Played;
-                transform.position = Vector3.Lerp(transform.position, transform.position + (Vector3.down * 3.3f), 1);
-
-                Debug.Log("Exceeds Max Action Count");
-                TM.CurrentActionCount -= CardActionCount;
-
-                return;
-            }
-
-            //Updates the Action text to show how much is left
-            TMUI.UpdateActionText();
-
-            CM.AvailableCardSlots[HandIndex] = Played;
-            CM.CardSlots[HandIndex].gameObject.SetActive(Played);
-            
-
-            Debug.Log(DamageRoll(CI.CardDamage));
-            Invoke("DiscardCard", 2f);
-        }
-
-        */
