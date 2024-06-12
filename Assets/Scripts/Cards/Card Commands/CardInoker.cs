@@ -3,8 +3,7 @@ using System.Collections.Generic;
 public class CardInoker{
 
     Stack<ICardCommand> _CommandList;
-    ICardCommand _OnCommand;
-
+    
     public CardInoker(){
         _CommandList = new Stack<ICardCommand>();
     }

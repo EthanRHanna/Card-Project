@@ -55,14 +55,14 @@ public static class GetAll{
         var enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
 
         //All Enemies and Player roll initiative
-        foreach(Enemy enemy in enemyManager.CurrentEnemies){
+        foreach(Enemy enemy in GetAllEnemies()){
             //enemy.Initiative = 1;
-            enemy.rollInitiative();
+            enemy.RollInitiative();
             //Debug.Log(enemy.Initiative + " " + enemy.name);
             InitiativeList.Add(enemy);
         }
 
-        player.rollInitiative();
+        player.RollInitiative();
         //Debug.Log(player.Initiative + "" + player.name);
         InitiativeList.Add(player);
 

@@ -403,20 +403,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e802bae5322c94c875b4e080fc73d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
+  Level: 0
   MaxHealth: 20
   CurrentHealth: 0
-  AC: 16
-  Speed: 25
-  AttackBonus: 3
+  AC: 0
+  Speed: 0
+  AttackBonus: 0
   Attributes: {fileID: 265783379}
   Saves: {fileID: 265783378}
   Skills: {fileID: 265783377}
   Initiative: 0
-  Class: 
+  Class: {fileID: 0}
   Archetype: 
-  Background: 
-  Ancestry: 
+  Background: {fileID: 0}
+  Ancestry: {fileID: 0}
 --- !u!1 &320544765
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,13 +926,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d0b3794b3fbb7469279db84895debe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Deck: []
   CardSlots:
   - {fileID: 7093314358342803070}
   - {fileID: 7093314358342803069}
   - {fileID: 7093314358342803068}
   - {fileID: 7093314358342803067}
   - {fileID: 7093314358342803066}
+  Deck: []
   AvailableCardSlots: 0101010101
   DiscardPile: []
 --- !u!4 &539099369

@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour{
 
-    protected int Level;
+    public int Level;
     public int MaxHealth;
     public int CurrentHealth;
-    protected int AC;
-    protected int Speed;
-    protected int AttackBonus;
-    protected Attributes Attributes;
-    protected Saves Saves;
-    protected Skills Skills;
+    public int AC;
+    public int Speed;
+    public int AttackBonus;
+    public Attributes Attributes;
+    public Saves Saves;
+    public Skills Skills;
 
     public int Initiative;
 
-    protected Unit(int Level, int MaxHealth, int AC, int Speed, int AttackBonus ,Attributes Attributes, Saves Saves, Skills Skills){
+    public Unit(int Level, int MaxHealth, int AC, int Speed, int AttackBonus ,Attributes Attributes, Saves Saves, Skills Skills){
         this.Level = Level;
 
         this.MaxHealth = MaxHealth;
@@ -32,9 +32,9 @@ public class Unit : MonoBehaviour{
         this.Skills = Skills;
     }
 
-    public void rollInitiative(){
+    public void RollInitiative(){
         //Initiative rolls: 1D20 + Perception Skill Proficency + Wisdom Modifier + Speed/(Some Numnber)
-        int SpeedImpact = 4; //Increase to lessen the impact speed has on Intiative
+        int SpeedImpact = 5; //Increase to lessen the impact speed has on Intiative
         int Initiative = Random.Range(1, 21) + Skills.proficencytoInt(Skills.Perception) + Level + (Attributes.Wisdom - 10) + (Speed / SpeedImpact);
 
         /*

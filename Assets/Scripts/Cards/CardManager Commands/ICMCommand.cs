@@ -1,10 +1,6 @@
 
-//The Template for all CardManager Commands
+//The template for all CardManager Commands
 
-
-public interface ICMCommand
-{
-
+public interface ICMCommand{
     void Execute();
-
 }

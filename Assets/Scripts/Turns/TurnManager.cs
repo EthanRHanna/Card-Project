@@ -12,7 +12,6 @@ public enum TurnState { Start, PlayerTurn, EnemyTurn, Won, Lost}
 public class TurnManager : MonoBehaviour{
 
     public TurnManagerUI TMUI;
-    private EnemyManager enemyManager;
     private CardManager cardManager;
 
     public TurnState state;
