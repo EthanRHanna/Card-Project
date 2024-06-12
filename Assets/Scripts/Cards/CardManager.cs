@@ -25,15 +25,8 @@ public class CardManager : MonoBehaviour{
     //Automaic shuffle to readd cards from the Discard pile when there is more than half of the starting deck inside of the discard pile
     private void Update(){
         if(DiscardPile.Count > Deck.Count / 2){
-            Shuffle();
+           _CMInvoker.Shuffle();
         }
     }
-
-    //Moves cards from the Discard Pile into the Deck to be played again
-    private void Shuffle(){
-        _CMInvoker.Shuffle();
-    }
-
-    
 
 }

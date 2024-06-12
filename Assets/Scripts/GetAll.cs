@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//A Class that Should house any GetAll method that might be used accrossed this project
 public static class GetAll{
    
     //Looks of "Player Deck" and takes all of it's children as cards to fill the Deck list without someone setting it in the inspector

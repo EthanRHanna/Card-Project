@@ -1,7 +1,8 @@
 using System;
-using UnityEngine;
 
+//A class that houses the Parser and the roller for Damage Rolls in this project
 public static class DamageRolls{
+    
     //Takes in a Damage String like: 2D6+1, 2D6, 2d6. And Parses and rolls the damage using math.random range.
     public static int DamageRoll(String UnrolledDamage, int? LevelModifier){
         //Enemies may have a LevelModifier that gives them a flat damage buff, but players will not
