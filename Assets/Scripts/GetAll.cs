@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //A Class that Should house any GetAll method that might be used accrossed this project
@@ -30,7 +31,6 @@ public static class GetAll{
         return AllEnemies;
     }
 
-
     //Looks of "Enemies" and takes all of it's children as Enemy to fill the CurrentEnemies list without someone setting it in the inspector
     public static List<bool> GetAllDeadEnemies(){
         List<bool> AllDeadEnmeies = new List<bool>();
@@ -45,6 +45,38 @@ public static class GetAll{
         }
 
         return AllDeadEnmeies;
+    }
+
+    //Gets the Player and All Enemies in the Scene and rolls Initiative for them and orders the list to match an Initiative List (Highest to Lowest)
+    public static List<Unit> GetInitiativeOrder(){
+        List<Unit> InitiativeList = new List<Unit>();
+        
+        var player = GameObject.Find("Player").GetComponent<Player>();
+        var enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+
+        //All Enemies and Player roll initiative
+        foreach(Enemy enemy in enemyManager.CurrentEnemies){
+            //enemy.Initiative = 1;
+            enemy.rollInitiative();
+            //Debug.Log(enemy.Initiative + " " + enemy.name);
+            InitiativeList.Add(enemy);
+        }
+
+        player.rollInitiative();
+        //Debug.Log(player.Initiative + "" + player.name);
+        InitiativeList.Add(player);
+
+        //Sort Initiative List by Highest Initiative to Lowest
+        InitiativeList = InitiativeList.OrderBy(x => x.Initiative).ToList();
+        InitiativeList.Reverse();
+
+        
+        //Uses this to check the order of Initiative (High to Low)
+        for(int i = 0; i < InitiativeList.Count; i++){
+            Debug.Log(InitiativeList[i].name + " " + InitiativeList[i].Initiative +  "\nOrder in List: " + i);
+        }
+        
+        return InitiativeList;
     }
 
 }

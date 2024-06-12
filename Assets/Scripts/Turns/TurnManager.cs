@@ -16,7 +16,6 @@ public class TurnManager : MonoBehaviour{
     private CardManager cardManager;
 
     public TurnState state;
-    private Player player;
     public List<Unit> InitiativeList = new List<Unit>();
 
     //-------------- Action Stuff --------------\\
@@ -32,8 +31,7 @@ public class TurnManager : MonoBehaviour{
         state = TurnState.Start;
         CurrentActionCount = 0;
 
-        player = GameObject.Find("Player").GetComponent<Player>();
-        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
         EndTurnButton = GameObject.Find("EndTurnButton").GetComponent<Button>();
 
@@ -42,7 +40,7 @@ public class TurnManager : MonoBehaviour{
         //Initiative is: 1D20 + Perception Skill Proficency + Wisdom Modifier + Speed/2
         //Initiative is tied to the player and enemy
         //Make a list of everyone and sort from Greatest to Least
-        InitiativeList = AllRollInitiative();
+        InitiativeList = GetAll.GetInitiativeOrder();
         //Debug.Log(InitiativeList.Count);
 
         //StartCoroutine(goingThroughTurnOrder());
@@ -83,32 +81,5 @@ public class TurnManager : MonoBehaviour{
         return (CurrentActionCount > MaxActions) ? true : false; 
     }
 
-    private List<Unit> AllRollInitiative(){
-        List<Unit> InitiativeList = new List<Unit>();
-
-        //All Enemies and Player roll initiative
-        foreach(Enemy enemy in enemyManager.CurrentEnemies){
-            //enemy.Initiative = 1;
-            enemy.rollInitiative();
-            //Debug.Log(enemy.Initiative + " " + enemy.name);
-            InitiativeList.Add(enemy);
-        }
-
-        player.rollInitiative();
-        //Debug.Log(player.Initiative + "" + player.name);
-        InitiativeList.Add(player);
-
-        //Sort Initiative List by Highest Initiative to Lowest
-        InitiativeList = InitiativeList.OrderBy(x => x.Initiative).ToList();
-        InitiativeList.Reverse();
-
-        
-        //Uses this to check the order of Initiative (High to Low)
-        for(int i = 0; i < InitiativeList.Count; i++){
-            Debug.Log(InitiativeList[i].name + " " + InitiativeList[i].Initiative +  "\nOrder in List: " + i);
-        }
-        
-        return InitiativeList;
-    }
 
 }
