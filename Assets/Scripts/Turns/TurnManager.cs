@@ -42,7 +42,11 @@ public class TurnManager : MonoBehaviour{
         InitiativeList = GetAll.GetInitiativeOrder();
         //Debug.Log(InitiativeList.Count);
 
-        //StartCoroutine(goingThroughTurnOrder());
+        StartCoroutine(GetttingPlayerHand());
+    }
+
+    IEnumerator GetttingPlayerHand(){
+        yield return null;
         cardManager.GetPlayerHand();
     }
 

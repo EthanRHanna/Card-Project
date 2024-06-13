@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+//Draws a card form the deck and moves it on to the hand postions
 public class DrawCardCommand : ICMCommand{
 
     private CardManager _CardManager;

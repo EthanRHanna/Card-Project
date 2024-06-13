@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+
+//Moves cards from the Discard Pile into the Deck to be played again
 public class ShuffleCommand : ICMCommand{
 
     private CardManager _CardManager;

@@ -14,7 +14,7 @@ public class Card : MonoBehaviour{
     private TurnManager TM;
     
 
-    void Start(){
+    private void Start(){
         CM = FindObjectOfType<CardManager>();
         TM = FindObjectOfType<TurnManager>();
         TMUI = FindObjectOfType<TurnManagerUI>();
