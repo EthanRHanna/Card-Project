@@ -70,8 +70,8 @@ public static class GetAll{
 
         //All Enemies and Player roll initiative
         foreach(Enemy enemy in GetAllEnemies()){
-            enemy.Initiative = 1;
-            //enemy.RollInitiative();
+            //enemy.Initiative = 1;
+            enemy.RollInitiative();
             //Debug.Log(enemy.Initiative + " " + enemy.name);
             InitiativeList.Add(enemy);
         }

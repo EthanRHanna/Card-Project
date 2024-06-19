@@ -55,6 +55,8 @@ public class TurnManager : MonoBehaviour{
             var unit = InitiativeList[i];
             if(unit is Player){
                 state = TurnState.PlayerTurn;
+                Debug.Log(state);
+
                 yield return StartCoroutine(GetttingPlayerHand());
 
                 EndedTurn = false;
@@ -62,6 +64,7 @@ public class TurnManager : MonoBehaviour{
                 state = TurnState.EnemyTurn;
                 Debug.Log(state);
                 
+                unit.AITurn();
             }
         }
     }

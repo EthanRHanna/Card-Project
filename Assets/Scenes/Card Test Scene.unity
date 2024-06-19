@@ -595,7 +595,6 @@ MonoBehaviour:
   state: 0
   InitiativeList: []
   CurrentActionCount: 0
-  EndTurnButton: {fileID: 0}
 --- !u!1 &344071148
 GameObject:
   m_ObjectHideFlags: 0

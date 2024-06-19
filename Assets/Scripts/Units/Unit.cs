@@ -49,5 +49,8 @@ public class Unit : MonoBehaviour{
          this.Initiative = Initiative;
     }
 
+    //Enemy Exclusive Method
+    //Each EnemyType will have diffent implentaions of this method, so in their class they will override this method
+    public virtual void AITurn(){}
     
 }
