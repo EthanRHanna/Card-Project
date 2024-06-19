@@ -47,6 +47,20 @@ public static class GetAll{
         return AllDeadEnmeies;
     }
 
+    public static bool AllEnemiesDead(){
+        bool allDead = true;
+        List<Enemy> AllEnemies = GetAllEnemies();
+
+        foreach(Enemy enemy in AllEnemies){
+            if(enemy.CurrentHealth > 0){
+                allDead = false;
+                return allDead;
+            }
+        }
+
+        return allDead;
+    }
+
     //Gets the Player and All Enemies in the Scene and rolls Initiative for them and orders the list to match an Initiative List (Highest to Lowest)
     public static List<Unit> GetInitiativeOrder(){
         List<Unit> InitiativeList = new List<Unit>();
@@ -56,8 +70,8 @@ public static class GetAll{
 
         //All Enemies and Player roll initiative
         foreach(Enemy enemy in GetAllEnemies()){
-            //enemy.Initiative = 1;
-            enemy.RollInitiative();
+            enemy.Initiative = 1;
+            //enemy.RollInitiative();
             //Debug.Log(enemy.Initiative + " " + enemy.name);
             InitiativeList.Add(enemy);
         }

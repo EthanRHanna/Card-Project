@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +24,7 @@ public class TurnManager : MonoBehaviour{
     public int CurrentActionCount;
 
     //------------- End Turn Stuff -------------\\
-    public Button EndTurnButton;
+    private bool EndedTurn = false;
 
 
 
@@ -30,9 +32,7 @@ public class TurnManager : MonoBehaviour{
         state = TurnState.Start;
         CurrentActionCount = 0;
 
-        
         cardManager = GameObject.Find("CardManager").GetComponent<CardManager>();
-        EndTurnButton = GameObject.Find("EndTurnButton").GetComponent<Button>();
 
         //-----Do Start-Up Stuff-----\\
 
@@ -41,23 +41,40 @@ public class TurnManager : MonoBehaviour{
         //Make a list of everyone and sort from Greatest to Least
         InitiativeList = GetAll.GetInitiativeOrder();
 
-        StartCoroutine(GetttingPlayerHand());
-        StopCoroutine(GetttingPlayerHand());
+        StartCoroutine(WhosTurn());
     }
 
     IEnumerator GetttingPlayerHand(){
-        yield return null;
+        yield return null; 
         cardManager.GetPlayerHand();
+        yield return new WaitUntil(() => EndedTurn);
     }
 
-    
+    IEnumerator WhosTurn(){
+        for(int i = 0; i < InitiativeList.Count; i++){
+            var unit = InitiativeList[i];
+            if(unit is Player){
+                state = TurnState.PlayerTurn;
+                yield return StartCoroutine(GetttingPlayerHand());
+
+                EndedTurn = false;
+            }else if(unit is Enemy){
+                state = TurnState.EnemyTurn;
+                Debug.Log(state);
+                
+            }
+        }
+    }
 
 
     public void EndTurn(){
         Debug.Log("Ended Turn!");
+        StopCoroutine(GetttingPlayerHand());
 
         CurrentActionCount = 0;
         TMUI.UpdateActionText();
+
+        EndedTurn = true;
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Enemy : Unit{
 
-    private int LevelModifier;
+    public int LevelModifier;
 
     public Enemy(int Level, int MaxHealth, int AC, int Speed, int AttackBonus, Attributes Attributes, Saves Saves, Skills Skills) : base(Level, MaxHealth, AC, Speed, AttackBonus, Attributes, Saves, Skills)
     {
@@ -28,10 +28,6 @@ public class Enemy : Unit{
         };
 
         this.Skills = Skills;
-    }
-
-    public int basicAttack(string Damage){
-        return DamageRolls.DamageRoll(Damage, LevelModifier);
     }
 
 }
