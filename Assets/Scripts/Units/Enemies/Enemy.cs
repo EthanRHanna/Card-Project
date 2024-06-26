@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Enemy : Unit{
 
     public int LevelModifier;
+    public int CurrentHealth;
 
     public Enemy(int Level, int MaxHealth, int AC, int Speed, int AttackBonus, Attributes Attributes, Saves Saves, Skills Skills) : base(Level, MaxHealth, AC, Speed, AttackBonus, Attributes, Saves, Skills)
     {

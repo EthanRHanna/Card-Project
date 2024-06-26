@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ancestry : MonoBehaviour{
+    public string AncestryName;
     public int Heath;
-    public string size;
+    public string Size;
     public int Speed;
     public string VisionSenses;
+    public string SpecialPassive;
     public string Description;
 
-    public Attributes AttributeBoosts;
+    protected Attributes AttributeBoosts;
     
+    public Attributes getAttributes(){
+        return AttributeBoosts;
+    }
 }

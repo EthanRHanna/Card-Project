@@ -56,6 +56,7 @@ public class TurnManager : MonoBehaviour{
             if(unit is Player){
                 state = TurnState.PlayerTurn;
                 Debug.Log(state);
+                Debug.Log("Dexterity Score: " + (unit as Player).Ancestry.getAttributes().Dexterity);
 
                 yield return StartCoroutine(GetttingPlayerHand());
 

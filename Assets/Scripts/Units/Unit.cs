@@ -4,7 +4,6 @@ public class Unit : MonoBehaviour{
 
     public int Level;
     public int MaxHealth;
-    public int CurrentHealth;
     public int AC;
     public int Speed;
     public int AttackBonus;
@@ -18,7 +17,6 @@ public class Unit : MonoBehaviour{
         this.Level = Level;
 
         this.MaxHealth = MaxHealth;
-        CurrentHealth = MaxHealth;
 
         this.AC = AC;
 
