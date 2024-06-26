@@ -439,9 +439,10 @@ MonoBehaviour:
   Heath: 10
   Size: Medium
   Speed: 20
-  VisionSenses: DarkCision
+  VisionSenses: DarkVision
   SpecialPassive: Clan Dagger
   Description: 
+  AttributeBoosts: {fileID: 0}
 --- !u!1 &320544765
 GameObject:
   m_ObjectHideFlags: 0
