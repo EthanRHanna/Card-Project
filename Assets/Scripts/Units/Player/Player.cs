@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : Unit{
-
     public Class Class;
     public Archetype Archetype;
     public Background Background;
@@ -37,4 +36,10 @@ public class Player : Unit{
 
     }
 
+    private void Start(){
+        Class = GameObject.Find("Class").GetComponent<Class>();
+        Archetype = GameObject.Find("Class").GetComponent<Archetype>();
+        Background = GameObject.Find("Background").GetComponent<Background>();
+        Ancestry = GameObject.Find("Ancestry").GetComponent<Ancestry>();
+    }
 }
