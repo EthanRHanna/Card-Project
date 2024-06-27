@@ -10,17 +10,6 @@ public class Dwarf : Ancestry{
         Speed = 20;
         VisionSenses = "DarkVision";
         SpecialPassive = "Clan Dagger";
-
-        AttributeBoosts = new Attributes(){
-            Strength = 0,
-            Dexterity = 0,
-            Constitution = 1,
-            Intelligence = 0,
-            Wisdom = 1,
-            Charisma = -1,
-        };
-
-
     }
 
 
