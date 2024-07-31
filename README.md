@@ -6,5 +6,9 @@ Current Card Base, to start making other cards. Hopfully, all cards will be spri
 
 ![CardBase](https://github.com/EthanRHanna/Card-Project/assets/42752797/275b425c-626b-44ca-b648-c8bf05b35b0e)
 
+Current UI:
+![image](https://github.com/user-attachments/assets/21203079-ca80-430a-b498-75e443bde30f)
+
+
 This started because of a gamejam:
   Null Refrence Error Counter: 25
